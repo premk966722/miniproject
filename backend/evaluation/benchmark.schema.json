@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TAX-SHIELD reviewed question benchmark",
+  "type": "object",
+  "required": ["case_id", "evidence_set", "category", "question", "expected_answer_requirements", "relevant_chunk_ids", "requires_clarification", "abstention_expected"],
+  "properties": {
+    "case_id": {"type": "string", "minLength": 1},
+    "evidence_set": {"enum": ["real_official", "synthetic_fixture"]},
+    "category": {"enum": ["statutory_lookup", "natural_language", "deduction_exemption", "regime_comparison", "historical_period", "tax_year", "amendment_sensitive", "exceptions_provisos", "ambiguous_clarification", "insufficient_evidence", "conflicting_versions", "calculation"]},
+    "question": {"type": "string", "minLength": 3},
+    "tax_period": {"type": ["string", "null"]},
+    "expected_answer_requirements": {"type": "array", "items": {"type": "string"}},
+    "expected_source_ids": {"type": "array", "items": {"type": "string"}},
+    "relevant_chunk_ids": {"type": "array", "items": {"type": "string"}},
+    "conditions_and_exceptions": {"type": "array", "items": {"type": "string"}},
+    "requires_clarification": {"type": "boolean"},
+    "abstention_expected": {"type": "boolean"},
+    "reviewer": {"type": ["string", "null"]},
+    "reviewed_at": {"type": ["string", "null"], "format": "date"},
+    "review_notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}
